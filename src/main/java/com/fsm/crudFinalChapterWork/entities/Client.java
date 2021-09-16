@@ -20,7 +20,7 @@ public class Client {
 	private String name;
 	private String cpf;
 	private Double income;
-	@Column(name = "bith_date")
+	@Column(name = "birth_date")
 	private Instant birthDate;
 	private Integer children;
 
