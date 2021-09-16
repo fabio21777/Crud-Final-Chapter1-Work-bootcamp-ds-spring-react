@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +47,7 @@ public class ClientController {
 		return ResponseEntity.ok().body(pages);
 		
 	}
+	
 	@PostMapping
 	public ResponseEntity<ClientDto>inset(@RequestBody ClientDto clientDto){
 		clientDto = clienteService.insert(clientDto); 
@@ -59,6 +61,11 @@ public class ClientController {
 	public ResponseEntity<ClientDto>update(@RequestBody ClientDto clientDto,@PathVariable Long id){
 		clientDto = clienteService.update(clientDto, id);
 		return ResponseEntity.ok(clientDto);
+	}
+	
+	@DeleteMapping(value = "/{id}")
+	public void delete(@PathVariable Long id) {
+		clienteService.delete(id);
 	}
 	
 }

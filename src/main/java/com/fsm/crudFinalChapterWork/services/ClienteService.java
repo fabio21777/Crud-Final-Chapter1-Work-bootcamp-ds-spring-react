@@ -44,6 +44,12 @@ public class ClienteService {
 		clientEntity = clienteRepository.save(clientEntity);
 		return new ClientDto(clientEntity);
 	}
+	
+	@Transactional
+	public void delete(Long id) {
+		clienteRepository.deleteById(id);
+	}
+	
 	private void clientDtoToClientEntity(ClientDto clientDto, Client clientEntity) {
 		clientEntity.setName(clientDto.getName());
 		clientEntity.setCpf(clientDto.getCpf());
@@ -51,6 +57,8 @@ public class ClienteService {
 		clientEntity.setBirthDate(clientDto.getBirthDate());
 		clientEntity.setChildren(clientDto.getChildren());
 	}
+	
+	
 	
 	
 }
