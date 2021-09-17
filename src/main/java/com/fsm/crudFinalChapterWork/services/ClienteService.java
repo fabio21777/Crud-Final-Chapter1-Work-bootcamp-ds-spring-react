@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -62,7 +63,7 @@ public class ClienteService {
 		try {
 			clienteRepository.deleteById(id);
 		}
-		catch (EntityNotFoundException e) {
+		catch (EmptyResultDataAccessException e) {
 			throw new ControllerNotFoundException("ID NOT FOUND" + id);
 		}
 		catch (DataBaseException e) {
